@@ -1,0 +1,32 @@
+Sub Part1()
+
+Dim x As Double
+Dim Total As Double
+Dim TotalV As Double
+
+Cells(1, 9).Value = Cells(1, 1).Value
+Cells(1, 10).Value = "Total Stock Value"
+x = 2
+Cells(x, 9).Value = Cells(x, 1).Value
+LastRow = Cells(Rows.Count, 1).End(xlUp).Row
+
+For i = 2 To LastRow
+
+If Cells(i, 1).Value = Cells(x, 9).Value Then
+
+TotalV = TotalV + Cells(i, 7).Value
+
+Else
+     
+Cells(x, 10).Value = TotalV
+TotalV = Cells(i, 7).Value
+x = x + 1
+Cells(x, 9).Value = Cells(i, 1).Value
+
+End If
+    
+Next i
+
+Cells(x, 10).Value = TotalV
+
+End Sub
